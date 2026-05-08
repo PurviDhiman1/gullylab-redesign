@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login — Gully Labs</title>
+  <link rel="stylesheet" href="admin-login.css" />
+</head>
+<body>
+  <div class="admin-login-page">
+    <div class="admin-login-card">
+      <h1>Admin Login</h1>
+      <p>Authorized access only.</p>
+
+      <div class="form-group">
+        <label for="adminPassword">Password</label>
+        <input
+          type="password"
+          id="adminPassword"
+          placeholder="Enter admin password"
+          autocomplete="off"
+        />
+      </div>
+
+      <button id="adminLoginBtn" type="button">Login</button>
+      <p id="adminLoginMsg"></p>
+    </div>
+  </div>
+
+  <script src="admin-login.js"></script>
+</body>
+</html>

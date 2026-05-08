@@ -1,0 +1,176 @@
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  }
+  
+  body{
+    font-family:Arial, sans-serif;
+    background:#f6f6f7;
+    color:#111;
+  }
+  
+  .track-page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  
+  .track-card{
+    width:100%;
+    max-width:700px;
+    background:#fff;
+    border-radius:24px;
+    padding:32px;
+    box-shadow:0 12px 40px rgba(0,0,0,0.08);
+  }
+  
+  .track-card h1{
+    font-size:32px;
+    margin-bottom:10px;
+  }
+  
+  .track-card p{
+    color:#666;
+    margin-bottom:24px;
+  }
+  
+  .form-group{
+    margin-bottom:16px;
+  }
+  
+  .form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+  }
+  
+  .form-group input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:14px;
+    font-size:15px;
+  }
+  
+  #trackBtn{
+    width:100%;
+    padding:16px;
+    border:none;
+    background:#111;
+    color:#fff;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:10px;
+  }
+  
+  #trackMessage{
+    margin-top:18px;
+    font-size:14px;
+  }
+  
+  .track-result{
+    margin-top:24px;
+    padding:20px;
+    border:1px solid #eee;
+    border-radius:18px;
+    background:#fafafa;
+  }
+  
+  .track-row{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    padding:12px 0;
+    border-bottom:1px solid #e9e9e9;
+  }
+  
+  .track-row:last-child{
+    border-bottom:none;
+  }
+  
+  .status-badge{
+    display:inline-block;
+    padding:8px 12px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:700;
+  }
+  
+  .status-pending{
+    background:#fff3cd;
+    color:#856404;
+  }
+  
+  .status-confirmed{
+    background:#d1ecf1;
+    color:#0c5460;
+  }
+  
+  .status-shipped{
+    background:#cfe2ff;
+    color:#084298;
+  }
+  
+  .status-delivered{
+    background:#d4edda;
+    color:#155724;
+  }
+
+  .order-progress{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:0;
+    margin:20px 0 24px;
+  }
+  
+  .progress-step{
+    width:90px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    flex-shrink:0;
+  }
+  
+  .progress-step p{
+    margin:8px 0 0;
+    font-size:12px;
+    color:#777;
+    font-weight:600;
+    line-height:1.3;
+  }
+  
+  .circle{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:#d9d9d9;
+    transition:0.25s ease;
+  }
+  
+  .progress-step.active .circle{
+    background:#111;
+  }
+  
+  .progress-step.active p{
+    color:#111;
+  }
+  
+  .progress-line{
+    flex:1;
+    height:3px;
+    background:#e4e4e4;
+    margin:7px 8px 0;
+    border-radius:999px;
+    transition:0.25s ease;
+  }
+  
+  .progress-line.active{
+    background:#111;
+  }

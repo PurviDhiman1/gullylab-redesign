@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>गली LABS</title>
+
+  <link rel="stylesheet" href="ind.css">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ------------------ INTRO SPLASH ------------------ -->
+  <div id="intro">
+    <img src="new.png" alt="Gully LABS" class="intro-logo">
+  </div>
+
+  <!-- ------------------ NAVBAR ------------------ -->
+  <header class="gl-nav">
+    <a href="shop.html" class="logo" aria-label="Back to shop">
+      <img src="new.png" alt="गली LABS Logo">
+    </a>
+
+    <nav class="gl-links" aria-label="Primary">
+      <a href="shop.html?collection=bestsellers">BESTSELLERS</a>
+      <a href="shop.html?collection=shark-approved">SHARK APPROVED</a>
+
+      <div class="gl-dd" data-dd>
+        <button class="gl-dd-btn" type="button" aria-haspopup="true" aria-expanded="false">
+          SNEAKERS <span class="gl-caret">▾</span>
+        </button>
+        <div class="gl-dd-menu" role="menu">
+          <a role="menuitem" href="shop.html?collection=sneakers&filter=new">New Arrivals</a>
+          <a role="menuitem" href="shop.html?collection=sneakers&filter=classic">Classic</a>
+          <a role="menuitem" href="shop.html?collection=sneakers&filter=limited">Limited Drops</a>
+        </div>
+      </div>
+
+      <a href="shop.html?collection=slides">SLIDES</a>
+      <a href="shop.html?collection=apparel">APPAREL</a>
+      <a href="shop.html?collection=accessories">ACCESSORIES</a>
+      <a href="story.html">STORY</a>
+      <a href="ind.html#markdown">MARKDOWN</a>
+    </nav>
+
+    <div class="gl-actions">
+      <!-- ACCOUNT (connects to ind.js IDs) -->
+      <button class="gl-icon" type="button" aria-label="Account" title="Account" id="profileBtn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7">
+          <path d="M20 21a8 8 0 0 0-16 0"></path>
+          <circle cx="12" cy="8" r="4"></circle>
+        </svg>
+      </button>
+
+      <!-- SEARCH -->
+      <button class="gl-icon" type="button" aria-label="Search" title="Search" id="searchOpenBtn">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M21 21l-4.3-4.3"></path>
+        </svg>
+      </button>
+
+      <a class="gl-icon gl-cart" href="cart.html" aria-label="Cart" title="Cart">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"></path>
+        </svg>
+        <span class="gl-cart-badge" id="cart-count">0</span>
+      </a>
+
+      <button class="gl-burger" type="button" aria-label="Open menu" aria-expanded="false" id="glBurger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="gl-drawer" id="glDrawer" aria-hidden="true">
+      <a href="shop.html?collection=bestsellers">BESTSELLERS</a>
+      <a href="shop.html?collection=shark-approved">SHARK APPROVED</a>
+      <details class="gl-m-details">
+        <summary>SNEAKERS</summary>
+        <a href="shop.html?collection=sneakers&filter=new">New Arrivals</a>
+        <a href="shop.html?collection=sneakers&filter=classic">Classic</a>
+        <a href="shop.html?collection=sneakers&filter=limited">Limited Drops</a>
+      </details>
+      <a href="shop.html?collection=slides">SLIDES</a>
+      <a href="shop.html?collection=apparel">APPAREL</a>
+      <a href="shop.html?collection=accessories">ACCESSORIES</a>
+      <a href="story.html">STORY</a>
+      <a href="ind.html#markdown">MARKDOWN</a>
+    </div>
+
+    <!-- =========================
+         PROFILE MENU (dropdown)
+    ========================== -->
+    <div class="gl-profile" id="profileMenu" aria-hidden="true">
+      <div class="gl-profile-top">
+        <div class="gl-avatar">GL</div>
+        <div class="gl-profile-meta">
+          <div class="gl-profile-name" id="profileName">Guest</div>
+          <div class="gl-profile-sub" id="profileSub">Not signed in</div>
+        </div>
+      </div>
+
+      <a href="#" class="gl-profile-item" id="profileLogin">Login</a>
+      <a href="#" class="gl-profile-item" id="profileOrders">Orders</a>
+      <a href="#" class="gl-profile-item" id="profileWishlist">Wishlist</a>
+
+      <button class="gl-profile-item gl-danger" type="button" id="profileLogout">Logout</button>
+    </div>
+  </header>
+
+  <!-- ------------------ HERO VIDEO/IMAGE SECTION ------------------ -->
+  <section class="hero">
+    <video id="video1" autoplay muted loop playsinline class="bg-video active"></video>
+    <video id="video2" autoplay muted loop playsinline class="bg-video"></video>
+
+    <div class="light-overlay"></div>
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+      <h1 id="flavorTitle">Gully Classic</h1>
+      <p id="flavorDesc">Step into Style and Comfort</p>
+      <button onclick="window.location.href='shop.html'">Shop Now</button>
+    </div>
+
+    <div class="dots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
+  </section>
+
+  
+
+  <!-- ------------------ PAGE CONTENT ------------------ -->
+  <div id="para1">
+    <p>
+      Welcome to गली LABS — your ultimate destination for shoes that combine style, comfort, and performance. Explore our collections and find the perfect pair for every step you take.
+    </p>
+  </div>
+
+  <!-- ------------------ PURPOSE SECTION ------------------ -->
+  <div class="purpose-section">
+    <div class="purpose-box back-box">
+      <img src="gullylab-logo.png" alt="Gully LABS Shoes" class="back-image">
+    </div>
+
+    <div class="purpose-box front-box">
+      <p>
+        Our mission is to create shoes that empower every move. We focus on quality materials, ergonomic designs, and innovative features to provide you comfort and style in every step.
+      </p>
+      <a href="mission.html" class="btn-outline">See Our Mission</a>
+    </div>
+
+    <div class="purpose-box right-box">
+      <p>
+        Sustainability and innovation are at the core of गली LABS. We prioritize eco-friendly materials and responsible manufacturing to create shoes that are good for you and the planet.
+      </p>
+      <a href="sustainability.html" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+
+  <div class="below-image">
+    <img src="lab.jpeg" alt="Gully LABS Collection" class="below-img">
+  </div>
+
+  <!-- =========================
+       SEARCH OVERLAY
+  ========================== -->
+  <div class="gl-search-overlay" id="searchModal" aria-hidden="true">
+    <div class="gl-search-panel" role="dialog" aria-modal="true" aria-label="Search">
+      <div class="gl-search-head">
+        <div class="gl-search-title">Search products</div>
+        <button class="gl-x" id="searchCloseBtn" aria-label="Close search">✕</button>
+      </div>
+
+      <input
+        id="searchInput"
+        class="gl-search-input"
+        type="text"
+        placeholder="Search sneakers, slides, etc..."
+        autocomplete="off"
+      />
+
+      <div class="gl-search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <footer class="gl-footer">
+
+    <div class="footer-inner">
+  
+      <div class="footer-col">
+        <h3>गली LABS</h3>
+        <p>Premium sneakers engineered for culture, comfort and movement.</p>
+      </div>
+  
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="shop.html?collection=sneakers">Sneakers</a>
+        <a href="shop.html?collection=slides">Slides</a>
+        <a href="shop.html?collection=apparel">Apparel</a>
+      </div>
+  
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="story.html">Our Story</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+      </div>
+  
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <a href="https://www.instagram.com/gullylabs">Instagram</a>
+        <a href="https://x.com/gullylabs">Twitter</a>
+        <a href="https://www.youtube.com/@gullylabs">YouTube</a>
+        <a href="https://api.whatsapp.com/send/?phone=%2B919311233304&text&type=phone_number&app_absent=0">Whatsapp</a>
+      </div>
+  
+    </div>
+  
+    <div class="footer-bottom">
+      © 2026 Gully Labs — All rights reserved
+    </div>
+  
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="products-data.js"></script>
+  <script src="ui.js"></script>
+  <script src="auth.js"></script>
+  <script src="ind.js"></script>
+</body>
+</html>

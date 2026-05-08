@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="cart.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a href="shop.html" class="logo">
+      <img src="new.png" alt="गली LABS Logo">
+    </a>
+
+    <a class="cart-link" href="cart.html" aria-label="Cart">
+      <div class="cart-icon-wrapper">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"></path>
+        </svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+    </a>
+  </nav>
+
+  <main class="page">
+    <section class="cart-hero">
+      <div class="cart-hero-copy">
+        <p class="hero-kicker">Bag</p>
+        <h1>Your Cart</h1>
+        <p class="sub" id="cartSubtext">Loading…</p>
+      </div>
+
+      <a class="back" href="shop.html">← Continue shopping</a>
+    </section>
+
+    <section class="layout">
+      <div class="cart-main">
+        <div class="section-head">
+          <h2>Items in Bag</h2>
+        </div>
+
+        <div id="cart-container"></div>
+      </div>
+
+      <aside class="summary">
+        <div class="summary-top">
+          <p class="summary-kicker">Order Summary</p>
+          <h3>Summary</h3>
+        </div>
+
+        <div class="sum-row">
+          <span>Subtotal</span>
+          <strong id="sumSubtotal">₹0</strong>
+        </div>
+
+        <div class="sum-row">
+          <span>Discount</span>
+          <strong id="sumDiscount">₹0</strong>
+        </div>
+
+        <div class="sum-row total">
+          <span>Total</span>
+          <strong id="sumTotal">₹0</strong>
+        </div>
+
+        <div class="coupon">
+          <input
+            type="text"
+            id="coupon-input"
+            placeholder="Try GULLY10 or FIRST500"
+            autocomplete="off"
+          >
+          <button id="applyCouponBtn" type="button">Apply</button>
+        </div>
+
+        <p class="coupon-msg" id="coupon-message"></p>
+
+        <button class="primary" id="checkoutBtn" type="button">Checkout</button>
+        <button class="secondary" id="clearCartBtn" type="button">Clear Cart</button>
+
+        <div class="summary-meta">
+          <p>Shipping and taxes are calculated at checkout.</p>
+          <p>Free standard delivery on selected orders.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="rec-wrap">
+      <div class="rec-head">
+        <p class="rec-kicker">More to explore</p>
+        <h3>You may also like</h3>
+        <p>Fresh pairs you might love.</p>
+      </div>
+
+      <div id="recommendGrid"></div>
+    </section>
+  </main>
+
+  <footer class="gl-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>गली LABS</h3>
+        <p>Premium sneakers engineered for culture, comfort and movement.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="shop.html?collection=sneakers">Sneakers</a>
+        <a href="shop.html?collection=slides">Slides</a>
+        <a href="shop.html?collection=apparel">Apparel</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="story.html">Our Story</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Gully Labs — All rights reserved
+    </div>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="products-data.js"></script>
+  <script src="cart.js"></script>
+
+</body>
+</html>

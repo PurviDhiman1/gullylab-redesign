@@ -1,0 +1,264 @@
+/* ui.css — Global micro-interactions */
+
+:root{
+  --ui-bg: rgba(255,255,255,.92);
+  --ui-line: rgba(0,0,0,.10);
+  --ui-shadow: 0 18px 55px rgba(0,0,0,.14);
+  --ui-text: #0b0b0c;
+  --ui-muted: rgba(0,0,0,.55);
+}
+
+/* ===== Page Loader ===== */
+.page-loader{
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  background: var(--ui-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease;
+}
+
+.page-loader.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.pl-box{
+  width: min(360px, 88vw);
+  background: #fff;
+  border: 1px solid var(--ui-line);
+  border-radius: 18px;
+  box-shadow: var(--ui-shadow);
+  padding: 18px;
+}
+
+.pl-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.pl-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  color: var(--ui-text);
+}
+
+.pl-brand img{
+  height: 22px;
+  width: auto;
+  display:block;
+}
+
+.pl-dots{
+  display:flex;
+  gap:6px;
+}
+
+.pl-dots span{
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.28);
+  animation: pulse 0.9s infinite ease-in-out;
+}
+
+.pl-dots span:nth-child(2){ animation-delay: .15s; }
+.pl-dots span:nth-child(3){ animation-delay: .30s; }
+
+@keyframes pulse{
+  0%,100%{ transform: translateY(0); opacity:.45; }
+  50%{ transform: translateY(-4px); opacity:1; }
+}
+
+.pl-text{
+  margin: 12px 0 0;
+  color: var(--ui-muted);
+  font-size: 13px;
+}
+
+/* ===== Toast ===== */
+.toast{
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 5001;
+
+  width: min(520px, 92vw);
+  background: rgba(17,17,17,.92);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  box-shadow: 0 20px 70px rgba(0,0,0,.28);
+  padding: 12px 12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.toast.show{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast .t-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.toast .t-ico{
+  width: 36px;
+  height: 36px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  background: rgba(255,255,255,.12);
+  font-weight:900;
+}
+
+.toast .t-title{
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.toast .t-sub{
+  font-size: 12px;
+  color: rgba(255,255,255,.75);
+  margin-top: 2px;
+}
+
+.toast .t-actions{
+  display:flex;
+  gap:10px;
+}
+
+.toast button{
+  border:0;
+  cursor:pointer;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-weight: 900;
+}
+
+.toast .t-view{
+  background:#fff;
+  color:#111;
+}
+
+.toast .t-close{
+  background: rgba(255,255,255,.10);
+  color:#fff;
+}
+
+/* ===== Button press feedback (global) ===== */
+button{
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active{
+  transform: translateY(1px);
+}
+
+/* ===== Responsive base (safe) ===== */
+*{ box-sizing: border-box; }
+
+img, video{
+  max-width: 100%;
+  height: auto;
+  display:block;
+}
+
+body{
+  margin:0;
+  overflow-x:hidden;
+}
+
+.container{
+  width:min(1200px, 100% - 32px);
+  margin:0 auto;
+}
+
+/* reduce huge paddings on small screens */
+@media (max-width: 768px){
+  .section{ padding: 56px 0 !important; }
+}
+
+@media (max-width: 480px){
+  .section{ padding: 44px 0 !important; }
+}
+
+/* ===== Mobile navbar fix ===== */
+@media (max-width: 900px){
+  .navbar, .gl-nav{
+    padding: 12px 16px !important;
+  }
+
+  .navbar .nav-links,
+  .gl-nav .nav-links,
+  .navbar nav,
+  .gl-nav nav{
+    gap: 12px !important;
+    flex-wrap: wrap;
+  }
+}
+
+/* ================= FOOTER ================= */
+
+.gl-footer{
+  background:#0b0b0c;
+  color:#fff;
+  padding:60px 0 30px;
+}
+
+.footer-inner{
+  width:min(1200px,100% - 40px);
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+}
+
+.footer-col h4{
+  margin-bottom:12px;
+  font-size:14px;
+  opacity:.9;
+}
+
+.footer-col a{
+  display:block;
+  color:rgba(255,255,255,.7);
+  text-decoration:none;
+  margin:6px 0;
+  font-size:13px;
+}
+
+.footer-bottom{
+  margin-top:40px;
+  text-align:center;
+  font-size:12px;
+  opacity:.5;
+}
+
+@media(max-width:768px){
+  .footer-inner{
+    grid-template-columns:1fr 1fr;
+  }
+}

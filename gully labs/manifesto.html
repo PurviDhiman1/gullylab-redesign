@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gully Labs Manifesto</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="manifesto.css" />
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="m-top">
+    <a class="m-brand" href="ind.html" aria-label="Home">
+        <a href="ind.html" class="logo">
+            <img src="new.png" alt="Gully Labs">
+          </a>
+    </a>
+
+    <nav class="m-nav" aria-label="Primary">
+      <a href="shop.html?collection=bestsellers">BESTSELLERS</a>
+      <a href="shop.html?collection=shark-approved">SHARK APPROVED</a>
+      <a href="shop.html?collection=sneakers">SNEAKERS</a>
+      <a href="shop.html?collection=slides">SLIDES</a>
+      <a href="shop.html?collection=apparel">APPAREL</a>
+      <a href="shop.html?collection=accessories">ACCESSORIES</a>
+      <a class="active" href="manifesto.html">STORY</a>
+      <a href="ind.html#markdown">MARKDOWN</a>
+    </nav>
+
+    <div class="m-actions">
+      <a class="m-ghost" href="story.html">← Back to Story</a>
+      <a class="m-btn" href="shop.html">Shop</a>
+    </div>
+  </header>
+
+  <!-- Layout -->
+  <main class="m-wrap">
+    <!-- Left column -->
+    <aside class="m-side">
+      <div class="m-side-card">
+        <p class="m-kicker">STORY</p>
+        <h1 class="m-title">Gully Labs Manifesto</h1>
+
+        <div class="m-meta">
+          <span class="m-date">May 14, 2023</span>
+          <span class="m-dot">•</span>
+          <span class="m-author">Arjun Singh</span>
+        </div>
+
+        <div class="m-divider"></div>
+
+        <p class="m-small">Share</p>
+        <div class="m-share">
+          <button class="m-chip" type="button" data-copy>Copy Link</button>
+          <a class="m-chip" href="#" id="shareX" rel="noopener">X</a>
+          <a class="m-chip" href="#" id="shareFb" rel="noopener">Facebook</a>
+          <a class="m-chip" href="#" id="sharePin" rel="noopener">Pinterest</a>
+        </div>
+
+        <div class="m-divider"></div>
+
+        <div class="m-side-note">
+          <p class="m-small">Reading time</p>
+          <p class="m-rt" id="readTime">—</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Article -->
+    <article class="m-article" id="article">
+      <div class="m-article-head">
+        <p class="m-lead">
+          A culture is more than a trend. It’s the stories we choose to celebrate — loudly, honestly, and without asking permission.
+        </p>
+      </div>
+
+      <div class="m-prose" id="prose">
+        <p>
+          A lot of meaning to life is given by culture — and culture is defined by food, music, sports,
+          movies, community and people. Somehow over the years, we feel that we have not celebrated
+          or elevated our own stories as much. Somehow we need approval from our colonial overlords.
+        </p>
+
+        <p>
+          Our pop culture sometimes does not feel as original, authentic or celebrated as French snobbery or elite coolness,
+          or Japanese detail and mysticism, or Americans doing annual pilgrimages, or streets of NYC where icons like Jay Z have risen.
+        </p>
+
+        <p>
+          In a weird way international sneaker brands celebrate our culture much more than local brands.
+          Every new local brand we see on Instagram is an “Indian-washed” version of something mass-produced elsewhere —
+          a lazy product and brand making cheap imitations of something that has worked in the West.
+        </p>
+
+        <blockquote>
+          Maybe it is an identity question — but where is the massive, in-your-face “this is my identity, these are my roots” messaging?
+        </blockquote>
+
+        <p>
+          We sell items like commodity, perhaps because we have not evolved as much in our offerings or perhaps there aren’t enough to afford it.
+          But in this age of social media where everyone is spending a lot of time online, looking and consuming things —
+          where is the celebration of the real? Where are our renegades, our subcultures, our street stories?
+        </p>
+
+        <p>
+          Lining up in front of random hype brands copping a pair is a poor substitute.
+          Perhaps with our entrance exam culture and fighting for survival vibes — living a freer life is rare privilege.
+          But culture is built on community — and building something with the community on the ground is a hard ask.
+        </p>
+
+        <p>
+          India needs to tell an authentic story and mad love for what it does. Sometimes it feels hard to find our OG story
+          beyond cricket — a religion — or Bollywood — filled with nepotism.
+        </p>
+
+        <p>
+          We want to elevate this feeling. We want us to be super proud of things that we do because we do it despite so many things holding us back.
+          We really hustle and struggle and try to make it big and often times end up with disappointment — but an Indian story is definitely Indian and we want to celebrate this.
+          We want a medium to tell this story.
+        </p>
+
+        <div class="m-end">
+          <div class="m-line"></div>
+          <p class="m-endtext">Built with the community. Shared with the community. First access, always.</p>
+          <div class="m-cta">
+            <a class="m-btn" href="shop.html">Explore Collection</a>
+            <a class="m-ghost" href="story.html">Back to Story</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    // Share links
+    const url = encodeURIComponent(location.href);
+    const text = encodeURIComponent("Gully Labs Manifesto");
+    document.getElementById("shareX").href  = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+    document.getElementById("shareFb").href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    document.getElementById("sharePin").href = `https://pinterest.com/pin/create/button/?url=${url}&description=${text}`;
+
+    // Copy link
+    const copyBtn = document.querySelector("[data-copy]");
+    copyBtn?.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(location.href);
+        copyBtn.textContent = "Copied ✓";
+        setTimeout(()=> copyBtn.textContent = "Copy Link", 900);
+      }catch(e){
+        alert("Copy failed");
+      }
+    });
+
+    // Read time (rough)
+    const prose = document.getElementById("prose");
+    const words = (prose?.innerText || "").trim().split(/\s+/).filter(Boolean).length;
+    const mins = Math.max(1, Math.round(words / 220));
+    document.getElementById("readTime").textContent = mins + " min";
+  </script>
+</body>
+</html>

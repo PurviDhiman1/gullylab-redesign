@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Gully Labs</title>
+  <link rel="stylesheet" href="ui.css" />
+  <style>
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      background:#0b0b0b;
+      color:#fff;
+      font-family:Arial,sans-serif;
+    }
+    .card{
+      width:min(420px,92vw);
+      background:#111;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:18px;
+      padding:28px;
+    }
+    h1{margin:0 0 8px}
+    p{color:rgba(255,255,255,.72)}
+    .field{margin:14px 0}
+    label{display:block;margin-bottom:8px}
+    input{
+      width:100%;
+      box-sizing:border-box;
+      padding:14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:#181818;
+      color:#fff;
+    }
+    button{
+      width:100%;
+      padding:14px;
+      border:0;
+      border-radius:12px;
+      background:#fff;
+      color:#111;
+      font-weight:700;
+      cursor:pointer;
+      margin-top:8px;
+    }
+    .back{display:inline-block;margin-top:16px;color:rgba(255,255,255,.75);text-decoration:none}
+    .msg{margin-top:14px;min-height:20px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Login</h1>
+    <p>Access your Gully Labs account</p>
+
+    <form id="loginForm">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" required />
+      </div>
+
+      <button type="submit">Continue</button>
+      <div class="msg" id="loginMsg"></div>
+    </form>
+
+    <a class="back" href="ind.html">← Back to home</a>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    const form = document.getElementById("loginForm");
+    const msg = document.getElementById("loginMsg");
+
+    const existingUser = getUser();
+    if (existingUser) {
+      window.location.href = "account.html";
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim().toLowerCase();
+
+      if (!name || !email) {
+        msg.textContent = "Please fill all fields.";
+        return;
+      }
+
+      setUser({ name, email });
+      msg.textContent = "Login successful. Redirecting...";
+
+      setTimeout(() => {
+        window.location.href = "account.html";
+      }, 600);
+    });
+  </script>
+</body>
+</html>

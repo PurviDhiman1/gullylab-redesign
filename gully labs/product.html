@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product</title>
+
+  <link rel="stylesheet" href="product.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Load data first, then product.js -->
+  <link rel="stylesheet" href="ui.css">
+  <script defer src="ui.js"></script>
+  <!-- <script src="products.js"></script> -->
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="shop.html" class="logo" aria-label="Back to shop">
+      <img src="new.png" alt="गली LABS Logo">
+    </a>
+
+    <!-- Cart drawer open button -->
+    <div style="display:flex; align-items:center; gap:12px;">
+      <a href="wishlist.html" class="cart-link" aria-label="Open wishlist" style="text-decoration:none; color:inherit;">
+        <div class="cart-icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M12 21s-6.7-4.35-9.33-8.05C.8 10.34 1.3 6.8 4.24 5.1c2.1-1.22 4.52-.48 5.76 1.12C11.24 4.62 13.66 3.88 15.76 5.1c2.94 1.7 3.44 5.24 1.57 7.85C18.7 16.65 12 21 12 21z"></path>
+          </svg>
+        </div>
+      </a>
+    
+      <button class="cart-link" id="openCartBtn" type="button" aria-label="Open cart">
+        <div class="cart-icon-wrapper">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"></path>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+      </button>
+    </div>
+  </nav>
+
+  <main class="product-wrapper">
+
+    <!-- IMAGE GALLERY -->
+    <section class="gallery">
+      <div class="main-slider" id="mainSlider">
+        <button class="arrow left" id="prevBtn" type="button" aria-label="Previous image">&#10094;</button>
+
+        <div class="slider-viewport">
+          <div class="slider-track" id="sliderTrack"></div>
+        </div>
+
+        <button class="arrow right" id="nextBtn" type="button" aria-label="Next image">&#10095;</button>
+      </div>
+
+      <div class="thumbnails" id="thumbnailRow"></div>
+    </section>
+
+    <!-- PRODUCT INFO -->
+    <section class="product-info">
+      <p class="tag" id="productTag">MEN</p>
+
+      <h1 id="productName">Loading...</h1>
+
+      <p class="price" id="productPrice">₹0</p>
+      <p class="tax">Taxes included. Shipping calculated at checkout.</p>
+
+      <!-- Sizes -->
+      <div class="sizes">
+        <p class="label">Select Size (UK)</p>
+        <div class="size-options" id="sizeOptions"></div>
+        <p class="size-hint" id="sizeHint">Select a size to add to cart.</p>
+        <div class="selected-chip" id="selectedChip" hidden>
+          Selected: <strong id="selectedChipText">UK -</strong>
+        </div>
+      </div>
+
+      <!-- Quantity -->
+      <div class="quantity">
+        <button id="minus" type="button" aria-label="Decrease quantity">-</button>
+        <span id="qty">1</span>
+        <button id="plus" type="button" aria-label="Increase quantity">+</button>
+      </div>
+
+      <div class="buttons">
+        <button class="cart" id="addToCartBtn" type="button">ADD TO CART</button>
+        <button class="buy" id="goToCartBtn" type="button">GO TO CART</button>
+      </div>
+      <button class="buy" id="wishlistBtn" type="button" style="margin-top:10px;">ADD TO WISHLIST</button>
+
+      <p class="microcopy" id="microcopy">Limited pairs. High demand.</p>
+    </section>
+
+    <!-- DESCRIPTION (NO IMAGES HERE) -->
+    <section class="product-description" id="productDescription">
+
+      <div class="desc-block reveal">
+        <h2 id="descTitle">Product</h2>
+        <p class="tagline" id="descTagline"></p>
+      </div>
+
+      <div class="accordion-item reveal">
+        <button class="accordion-header" type="button">
+          <h3>Craftsmanship & Features</h3>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <ul class="feature-list" id="featureList"></ul>
+        </div>
+      </div>
+
+      <div class="accordion-item reveal">
+        <button class="accordion-header" type="button">
+          <h3>Flexible Payments</h3>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content highlight" id="paymentBlock"></div>
+      </div>
+
+      <div class="accordion-item reveal">
+        <button class="accordion-header" type="button">
+          <h3>Delivery & Returns</h3>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content" id="deliveryBlock"></div>
+      </div>
+
+      <div class="accordion-item reveal">
+        <button class="accordion-header" type="button">
+          <h3>Product Details</h3>
+          <span class="accordion-icon">+</span>
+        </button>
+        <div class="accordion-content">
+          <div class="details-grid" id="detailsGrid"></div>
+        </div>
+      </div>
+
+      <div class="desc-block brand-footer reveal">
+        <p>
+          Gully Labs Innovations Pvt. Ltd.  
+          2nd Floor, C-83, HCL, Sector-10, Noida, Uttar Pradesh – 201301
+        </p>
+        <p>Customer Care: +91 93112 33304 | hello@gullylabs.com</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- STICKY ADD TO CART -->
+  <div class="sticky-cart" id="stickyCart" aria-hidden="true">
+    <div class="sticky-content">
+      <div class="sticky-info">
+        <span id="stickyName">Loading...</span>
+        <span id="stickyPrice">₹0</span>
+      </div>
+      <button id="stickyAdd" type="button">ADD TO CART</button>
+    </div>
+  </div>
+
+  <!-- LEVEL 3: CART DRAWER -->
+  <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cd-header">
+      <h3>Your Cart</h3>
+      <button class="cd-close" id="closeCartBtn" type="button" aria-label="Close cart">✕</button>
+    </div>
+
+    <div class="cd-items" id="drawerItems"></div>
+
+    <div class="cd-footer">
+      <div class="cd-row">
+        <span>Subtotal</span>
+        <strong id="drawerSubtotal">₹0</strong>
+      </div>
+
+      <a href="cart.html">
+        <button class="primary" type="button">CHECKOUT</button>
+      </a>
+      <button class="cd-viewcart" id="drawerViewCart" type="button">VIEW CART</button>
+
+      <p class="cd-note">Shipping & taxes calculated at checkout.</p>
+    </div>
+  </aside>
+
+<div class="gallery-modal" id="galleryModal" aria-hidden="true">
+  <div class="gm-overlay" id="gmOverlay"></div>
+
+  <div class="gm-sheet" role="dialog" aria-modal="true">
+    <button class="gm-close" id="gmClose" aria-label="Close">✕</button>
+
+    <button class="gm-arrow left" id="gmPrev" aria-label="Previous">‹</button>
+    <button class="gm-arrow right" id="gmNext" aria-label="Next">›</button>
+
+    <div class="gm-main">
+      <img id="gmImage" src="" alt="Product image" />
+    </div>
+
+    <div class="gm-thumbs" id="gmThumbs"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" aria-hidden="true">
+  <div class="t-left">
+    <div class="t-ico">✓</div>
+    <div>
+      <div class="t-title" id="toastTitle">Added to cart</div>
+      <div class="t-sub" id="toastSub">Ready when you are.</div>
+    </div>
+  </div>
+
+  <div class="t-actions">
+    <button class="t-view" id="toastView" type="button">VIEW CART</button>
+    <button class="t-close" id="toastClose" type="button">✕</button>
+  </div>
+</div>
+
+
+<section class="related-wrap">
+  <div class="related-head">
+    <p class="related-kicker">More to Explore</p>
+    <h3>You may also like</h3>
+    <p>Fresh pairs you might love.</p>
+  </div>
+
+  <div id="recommendGrid"></div>
+</section>
+
+<footer class="gl-footer">
+
+  <div class="footer-inner">
+
+    <div class="footer-col">
+      <h3>गली LABS</h3>
+      <p>Premium sneakers engineered for culture, comfort and movement.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="shop.html?collection=sneakers">Sneakers</a>
+      <a href="shop.html?collection=slides">Slides</a>
+      <a href="shop.html?collection=apparel">Apparel</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="story.html">Our Story</a>
+      <a href="#">Careers</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow</h4>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Gully Labs — All rights reserved
+  </div>
+
+</footer>
+
+<script src="products.js"></script>
+<script src="products-data.js"></script>
+<script src="auth.js"></script>
+<script src="product.js"></script>
+</body>
+</html>

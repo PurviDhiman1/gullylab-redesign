@@ -1,0 +1,80 @@
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  }
+  
+  body{
+    font-family:Arial, sans-serif;
+    background:#f6f6f7;
+    color:#111;
+  }
+  
+  .admin-login-page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  
+  .admin-login-card{
+    width:100%;
+    max-width:420px;
+    background:#fff;
+    border-radius:24px;
+    padding:32px;
+    box-shadow:0 12px 40px rgba(0,0,0,0.08);
+  }
+  
+  .admin-login-card h1{
+    font-size:32px;
+    margin-bottom:10px;
+  }
+  
+  .admin-login-card p{
+    color:#666;
+    margin-bottom:20px;
+  }
+  
+  .form-group{
+    margin-bottom:16px;
+  }
+  
+  .form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:#111;
+  }
+  
+  .form-group input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:14px;
+    font-size:15px;
+    outline:none;
+  }
+  
+  .form-group input:focus{
+    border-color:#111;
+  }
+  
+  #adminLoginBtn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:#111;
+    color:#fff;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  
+  #adminLoginMsg{
+    margin-top:14px;
+    font-size:14px;
+    min-height:20px;
+  }

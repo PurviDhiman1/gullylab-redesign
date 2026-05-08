@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background: #f5f5f5;
+    color: #111;
+  }
+  
+  .orders-wrap {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+  }
+  
+  .orders-card {
+    width: min(900px, 100%);
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.08);
+  }
+  
+  .orders-form {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  .orders-form input,
+  .orders-form button {
+    height: 48px;
+    border-radius: 14px;
+    font: inherit;
+  }
+  
+  .orders-form input {
+    flex: 1;
+    min-width: 260px;
+    border: 1px solid #ddd;
+    padding: 0 14px;
+  }
+  
+  .orders-form button {
+    border: 0;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+    padding: 0 18px;
+    font-weight: 700;
+  }
+  
+  .orders-list {
+    display: grid;
+    gap: 14px;
+  }
+  
+  .order-card {
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 16px;
+    background: #fafafa;
+  }
+  
+  .order-title {
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  
+  .order-sub {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 6px;
+  }

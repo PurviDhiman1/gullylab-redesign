@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account — Gully Labs</title>
+  <link rel="stylesheet" href="ui.css" />
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --panel:#101010;
+      --panel-2:#141414;
+      --line:rgba(255,255,255,.1);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.68);
+      --soft:rgba(255,255,255,.84);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.05), transparent 28%),
+        radial-gradient(circle at top right, rgba(255,255,255,.04), transparent 24%),
+        linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+      color:var(--text);
+      font-family:Arial, sans-serif;
+      min-height:100vh;
+    }
+
+    .topbar{
+      width:100%;
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(10px);
+      background:rgba(10,10,10,.82);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .topbar-inner{
+      width:min(1180px, 92vw);
+      margin:0 auto;
+      height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      text-decoration:none;
+      color:#fff;
+      font-weight:700;
+      letter-spacing:.04em;
+    }
+
+    .brand img{
+      height:28px;
+      width:auto;
+      display:block;
+    }
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .top-actions a,
+    .top-actions button{
+      height:42px;
+      padding:0 16px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:transparent;
+      color:#fff;
+      text-decoration:none;
+      cursor:pointer;
+      font-size:14px;
+      font-weight:600;
+      transition:all .18s ease;
+    }
+
+    .top-actions a:hover,
+    .top-actions button:hover{
+      background:#fff;
+      color:#111;
+      border-color:#fff;
+    }
+
+    .wrap{
+      width:min(1180px, 92vw);
+      margin:36px auto 60px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      margin-bottom:22px;
+    }
+
+    .hero-card,
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid var(--line);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,.28);
+    }
+
+    .hero-main{
+      min-height:340px;
+      padding:34px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      position:relative;
+      isolation:isolate;
+    }
+
+    .hero-main::before{
+      content:"";
+      position:absolute;
+      inset:auto -40px -60px auto;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.08), transparent 66%);
+      z-index:-1;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .eyebrow-dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#fff;
+      opacity:.9;
+    }
+
+    .hero-title{
+      margin:0;
+      font-size:56px;
+      line-height:.96;
+      letter-spacing:-.04em;
+      max-width:520px;
+    }
+
+    .hero-sub{
+      margin:18px 0 0;
+      color:var(--soft);
+      font-size:16px;
+      line-height:1.6;
+      max-width:520px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .hero-actions a,
+    .hero-actions button{
+      height:48px;
+      padding:0 20px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:transparent;
+      color:#fff;
+      text-decoration:none;
+      cursor:pointer;
+      font-size:14px;
+      font-weight:700;
+      transition:all .18s ease;
+    }
+
+    .hero-actions .primary{
+      background:#fff;
+      color:#111;
+      border-color:#fff;
+    }
+
+    .hero-actions a:hover,
+    .hero-actions button:hover{
+      transform:translateY(-1px);
+    }
+
+    .hero-side{
+      min-height:340px;
+      padding:28px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .profile-chip{
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+
+    .avatar{
+      width:68px;
+      height:68px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#fff;
+      color:#111;
+      font-size:24px;
+      font-weight:800;
+      flex-shrink:0;
+    }
+
+    .profile-meta h2{
+      margin:0 0 6px;
+      font-size:24px;
+      letter-spacing:-.03em;
+    }
+
+    .profile-meta p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:12px;
+    }
+
+    .mini-stat{
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:16px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .mini-label{
+      color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      margin-bottom:10px;
+    }
+
+    .mini-value{
+      font-size:26px;
+      font-weight:800;
+      letter-spacing:-.04em;
+    }
+
+    .section-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:22px;
+    }
+
+    .card{
+      padding:28px;
+    }
+
+    .card-title{
+      margin:0 0 18px;
+      font-size:24px;
+      letter-spacing:-.03em;
+    }
+
+    .info-list{
+      display:grid;
+      gap:14px;
+    }
+
+    .info-row{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 0;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .info-row:last-child{
+      border-bottom:0;
+      padding-bottom:0;
+    }
+
+    .info-label{
+      color:var(--muted);
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      min-width:120px;
+    }
+
+    .info-value{
+      color:#fff;
+      font-size:15px;
+      font-weight:600;
+      text-align:right;
+      word-break:break-word;
+    }
+
+    .action-stack{
+      display:grid;
+      gap:12px;
+    }
+
+    .action-link{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px 18px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.02);
+      color:#fff;
+      text-decoration:none;
+      transition:all .18s ease;
+    }
+
+    .action-link:hover{
+      background:#fff;
+      color:#111;
+      border-color:#fff;
+      transform:translateY(-1px);
+    }
+
+    .action-link strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:15px;
+    }
+
+    .action-link span{
+      color:inherit;
+      opacity:.72;
+      font-size:13px;
+    }
+
+    .arrow{
+      font-size:20px;
+      line-height:1;
+      flex-shrink:0;
+    }
+
+    @media (max-width: 980px){
+      .hero,
+      .section-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-title{
+        font-size:42px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .topbar-inner{
+        height:auto;
+        padding:14px 0;
+        align-items:flex-start;
+        gap:14px;
+        flex-direction:column;
+      }
+
+      .top-actions{
+        width:100%;
+      }
+
+      .top-actions a,
+      .top-actions button{
+        flex:1 1 calc(50% - 6px);
+        justify-content:center;
+      }
+
+      .hero-main,
+      .hero-side,
+      .card{
+        padding:20px;
+        border-radius:22px;
+      }
+
+      .hero-title{
+        font-size:34px;
+      }
+
+      .mini-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .info-row{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .info-value{
+        text-align:left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="ind.html" class="brand">
+        <img src="new.png" alt="Gully Labs Logo">
+      </a>
+
+      <div class="top-actions">
+        <a href="shop.html">Shop</a>
+        <a href="track.html">Orders</a>
+        <a href="wishlist.html">Wishlist</a>
+        <button id="logoutTopBtn" type="button">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-card hero-main">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Member profile
+          </div>
+
+          <h1 class="hero-title">Your account, built for easy movement.</h1>
+          <p class="hero-sub" id="welcomeText">
+            Welcome back.
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <a href="track.html" class="primary">View Orders</a>
+          <a href="wishlist.html">My Wishlist</a>
+          <a href="ind.html">Back to Home</a>
+        </div>
+      </div>
+
+      <div class="hero-card hero-side">
+        <div class="profile-chip">
+          <div class="avatar" id="avatarText">P</div>
+          <div class="profile-meta">
+            <h2 id="userNameTop">User</h2>
+            <p id="userEmailTop">email@example.com</p>
+          </div>
+        </div>
+
+        <div class="mini-grid">
+          <div class="mini-stat">
+            <div class="mini-label">Orders</div>
+            <div class="mini-value">03</div>
+          </div>
+
+          <div class="mini-stat">
+            <div class="mini-label">Wishlist</div>
+            <div class="mini-value" id="wishlistCount">00</div>
+          </div>
+
+          <div class="mini-stat">
+            <div class="mini-label">Status</div>
+            <div class="mini-value" style="font-size:20px;">Active</div>
+          </div>
+
+          <div class="mini-stat">
+            <div class="mini-label">Member Since</div>
+            <div class="mini-value" style="font-size:20px;">2026</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-grid">
+      <div class="card">
+        <h3 class="card-title">Profile Details</h3>
+
+        <div class="info-list">
+          <div class="info-row">
+            <div class="info-label">Name</div>
+            <div class="info-value" id="userName">-</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">Email</div>
+            <div class="info-value" id="userEmail">-</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">Account Type</div>
+            <div class="info-value">Customer</div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-label">Region</div>
+            <div class="info-value">India</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Quick Actions</h3>
+
+        <div class="action-stack">
+          <a class="action-link" href="track.html">
+            <div>
+              <strong>Track your orders</strong>
+              <span>View status, shipping updates, and order details.</span>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+
+          <a class="action-link" href="wishlist.html">
+            <div>
+              <strong>Open wishlist</strong>
+              <span>See saved products and revisit your favorites.</span>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+
+          <a class="action-link" href="shop.html">
+            <div>
+              <strong>Continue shopping</strong>
+              <span>Discover new pairs and latest collections.</span>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    const user = getUser();
+
+    if (!user) {
+      window.location.href = "login.html";
+    }
+
+    const wishlistCountEl = document.getElementById("wishlistCount");
+    const wishlistItems = getWishlist();
+
+    const name = user?.name || "Guest";
+    const email = user?.email || "Not available";
+    const firstLetter = name.trim().charAt(0).toUpperCase() || "G";
+
+    document.getElementById("welcomeText").textContent = `Welcome back, ${name}. Manage your saved products, track orders, and keep your Gully Labs experience moving.`;
+    document.getElementById("userName").textContent = name;
+    document.getElementById("userEmail").textContent = email;
+    document.getElementById("userNameTop").textContent = name;
+    document.getElementById("userEmailTop").textContent = email;
+    document.getElementById("avatarText").textContent = firstLetter;
+    wishlistCountEl.textContent = String(wishlistItems.length).padStart(2, "0");
+
+    function doLogout() {
+      logoutUser();
+      window.location.href = "ind.html";
+    }
+
+    document.getElementById("logoutTopBtn").addEventListener("click", doLogout);
+  </script>
+</body>
+</html>

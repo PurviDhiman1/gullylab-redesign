@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Story | Gully LABS</title>
+
+  <link rel="stylesheet" href="story.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- NAV (same style like your homepage) -->
+  <header class="gl-nav">
+    <a class="gl-brand" href="ind.html" aria-label="Gully LABS Home">
+      <!-- <span class="gl-brand-hi">गली</span><span class="gl-brand-en">LABS</span> -->
+      <a href="ind.html" class="logo">
+        <img src="new.png" alt="Gully Labs">
+      </a>
+    </a>
+
+    <nav class="gl-links" aria-label="Primary">
+      <a href="shop.html?collection=bestsellers">BESTSELLERS</a>
+      <a href="shop.html?collection=shark-approved">SHARK APPROVED</a>
+
+      <div class="gl-dd" data-dd>
+        <button class="gl-dd-btn" type="button" aria-haspopup="true" aria-expanded="false">
+          SNEAKERS <span class="gl-caret">▾</span>
+        </button>
+        <div class="gl-dd-menu" role="menu">
+          <a role="menuitem" href="shop.html?collection=sneakers&filter=new">New Arrivals</a>
+          <a role="menuitem" href="shop.html?collection=sneakers&filter=classic">Classic</a>
+          <a role="menuitem" href="shop.html?collection=sneakers&filter=limited">Limited Drops</a>
+        </div>
+      </div>
+
+      <a href="shop.html?collection=slides">SLIDES</a>
+      <a href="shop.html?collection=apparel">APPAREL</a>
+      <a href="shop.html?collection=accessories">ACCESSORIES</a>
+      <a class="is-active" href="story.html">STORY</a>
+      <a href="ind.html#markdown">MARKDOWN</a>
+    </nav>
+
+    <div class="gl-actions">
+      <a class="gl-icon gl-cart" href="cart.html" aria-label="Cart" title="Cart">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"></path>
+        </svg>
+        <span class="gl-cart-badge" id="cart-count">0</span>
+      </a>
+
+      <button class="gl-burger" type="button" aria-label="Open menu" aria-expanded="false" id="glBurger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="gl-drawer" id="glDrawer" aria-hidden="true">
+      <a href="shop.html?collection=bestsellers">BESTSELLERS</a>
+      <a href="shop.html?collection=shark-approved">SHARK APPROVED</a>
+      <details class="gl-m-details">
+        <summary>SNEAKERS</summary>
+        <a href="shop.html?collection=sneakers&filter=new">New Arrivals</a>
+        <a href="shop.html?collection=sneakers&filter=classic">Classic</a>
+        <a href="shop.html?collection=sneakers&filter=limited">Limited Drops</a>
+      </details>
+      <a href="shop.html?collection=slides">SLIDES</a>
+      <a href="shop.html?collection=apparel">APPAREL</a>
+      <a href="shop.html?collection=accessories">ACCESSORIES</a>
+      <a href="story.html">STORY</a>
+      <a href="ind.html#markdown">MARKDOWN</a>
+    </div>
+  </header>
+
+  <!-- HERO / MANIFESTO (AIR) -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-media">
+        <img src="air.png" alt="Gully Labs - Air" />
+      </div>
+
+      <div class="hero-copy">
+        <p class="kicker kicker-line">OUR STORY</p>
+        <h1>Our Manifesto</h1>
+        <p class="lead">
+          Indian culture is more than just bollywood, cricket and naan-bread.
+          We’re taking those raw, real and untold stories to the global stage.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-solid" href="manifesto.html">READ OUR MANIFESTO</a>
+          <a class="btn btn-ghost" href="shop.html">EXPLORE COLLECTION</a>
+        </div>
+
+        <div class="mini-points">
+          <div class="mini">
+            <div class="mini-title">Built in Delhi</div>
+            <div class="mini-sub">Craft-first sneaker culture</div>
+          </div>
+          <div class="mini">
+            <div class="mini-title">Made to Last</div>
+            <div class="mini-sub">Premium materials & comfort</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED IN -->
+  <section class="strip">
+    <div class="container">
+      <div class="strip-title">FEATURED IN</div>
+      <div class="strip-row">
+        <span>GQ</span>
+        <span>BAZAAR</span>
+        <span>ELLE</span>
+        <span>VOGUE</span>
+        <span>GRAZIA</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="highlights" id="manifesto">
+    <div class="container">
+      <div class="section-head">
+        <h2>OUR HIGHLIGHTS SO FAR</h2>
+        <div class="section-actions">
+          <button class="icon-btn" type="button" data-scroll="left" aria-label="Scroll left">←</button>
+          <button class="icon-btn" type="button" data-scroll="right" aria-label="Scroll right">→</button>
+        </div>
+      </div>
+
+      <div class="rail" id="rail">
+        <article class="card">
+          <div class="card-media">
+            <img src="coll.png" alt="Highlights - Coll" />
+          </div>
+          <div class="card-body">
+            <h3>Brand Launch, August 2023</h3>
+            <p>Born from a simple idea: build a sneaker brand that’s truly Indian — bold, crafted and unapologetic.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <img src="man.png" alt="Highlights - Man" />
+          </div>
+          <div class="card-body">
+            <h3>The First Three Months</h3>
+            <p>Fast, raw and full of momentum. Early traction, community love and the first big features.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <img src="pr.png" alt="Highlights - PR" />
+          </div>
+          <div class="card-body">
+            <h3>Our First Unit</h3>
+            <p>From samples to shipping — all under one roof. The beginning of scale with craftsmanship intact.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-media">
+            <img src="people.png" alt="Highlights - People" />
+          </div>
+          <div class="card-body">
+            <h3>A New Home</h3>
+            <p>Our team grows, but the mission stays the same: make Indian sneaker culture global.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRAFT (FAN) -->
+  <section class="split">
+    <div class="container split-grid">
+      <div class="split-copy">
+        <p class="kicker">OUR CRAFTMANSHIP</p>
+        <h2>The Heart Of Our Craft</h2>
+        <p>
+          Behind every pair you love, is a pair of hands with decades of expertise.
+          Our karigars are the backbone of everything we build.
+        </p>
+        <a class="btn btn-solid" href="shop.html">EXPLORE COLLECTION</a>
+      </div>
+
+      <div class="split-media">
+        <img src="fan.png" alt="Our Craft - Fan" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIGIN (WO) -->
+  <section class="split alt">
+    <div class="container split-grid">
+      <div class="split-media">
+        <img src="wo.png" alt="Origin - WO" />
+      </div>
+
+      <div class="split-copy">
+        <p class="kicker">FOUNDERS NOTE</p>
+        <h2>Our Origin Story</h2>
+        <p>
+          When we returned, we saw a gap: a culture obsessed with western kicks but blind to its own soul.
+          That’s where Gully Labs began — with belief, craft and community.
+        </p>
+        <p class="muted">
+          Made by hand, powered by belief, and unapologetically Indian.
+        </p>
+        <div class="sig">Arjun Singh — Co-Founder <span>•</span> Animesh Mishra — Co-Founder</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container foot-row">
+      <div class="foot-brand">
+        <div class="foot-logo"><span>गली</span>LABS</div>
+        <p>Built with the community. Shared with the community. First access, always.</p>
+      </div>
+
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Shop</h4>
+          <a href="shop.html">Shop All</a>
+          <a href="shop.html?collection=bestsellers">Bestsellers</a>
+          <a href="shop.html?collection=sneakers">Sneakers</a>
+          <a href="shop.html?collection=slides">Slides</a>
+        </div>
+
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <a href="shop.html?collection=accessories">Accessories</a>
+          <a href="story.html">Our Story</a>
+          <a href="cart.html">Cart</a>
+        </div>
+      </div>
+    </div>
+    <div class="container foot-bottom">
+      <span>© 2026 Gully Labs. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="story.js"></script>
+</body>
+</html>

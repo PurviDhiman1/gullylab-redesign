@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Track Order | Gully Labs</title>
+  <link rel="stylesheet" href="track.css" />
+</head>
+<body>
+  <div class="track-wrap">
+    <div class="track-card">
+      <h1>Track Your Order</h1>
+      <p class="sub">Enter your order ID and email to view live status.</p>
+
+      <form id="trackForm" class="track-form">
+        <input type="text" id="orderId" placeholder="Order ID (e.g. GL-20260403-001)" required />
+        <input type="email" id="email" placeholder="Email address" required />
+        <button type="submit" id="trackBtn">Track Order</button>
+      </form>
+
+      <div id="trackMessage" class="track-message"></div>
+
+      <div id="trackResult" class="track-result hidden">
+        <div class="order-top">
+          <h2 id="resultOrderId"></h2>
+          <span id="resultStatus" class="status-pill"></span>
+        </div>
+
+        <div id="statusTracker" class="status-tracker"></div>
+
+        <div class="order-meta">
+          <p><strong>Date:</strong> <span id="resultDate"></span></p>
+          <p><strong>Total:</strong> <span id="resultTotal"></span></p>
+          <p><strong>Address:</strong> <span id="resultAddress"></span></p>
+        </div>
+
+        <div>
+          <h3>Items</h3>
+          <div id="resultItems" class="items-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="track.js"></script>
+</body>
+</html>

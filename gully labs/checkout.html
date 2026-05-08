@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Gully Labs</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="checkout.css" />
+</head>
+<body>
+  <header class="ck-nav">
+    <a href="shop.html" class="ck-logo" aria-label="Back to shop">
+      <img src="new.png" alt="Gully Labs Logo">
+    </a>
+
+    <a href="cart.html" class="ck-back">← Back to cart</a>
+  </header>
+
+  <main class="ck-wrap">
+    <section class="ck-left">
+      <div class="ck-head">
+        <p class="eyebrow">Secure Checkout</p>
+        <h1>Complete your order</h1>
+        <p class="sub">
+          Premium pairs, delivered with care.
+        </p>
+      </div>
+
+      <form id="checkoutForm" novalidate>
+        <div class="ck-card">
+          <h2>Contact details</h2>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="firstName">First name</label>
+              <input id="firstName" name="firstName" type="text" placeholder="Purvi" />
+              <small class="error" data-error-for="firstName"></small>
+            </div>
+
+            <div class="field">
+              <label for="lastName">Last name</label>
+              <input id="lastName" name="lastName" type="text" placeholder="Dhiman" />
+              <small class="error" data-error-for="lastName"></small>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" />
+            <small class="error" data-error-for="email"></small>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" name="phone" type="tel" placeholder="9876543210" />
+            <small class="error" data-error-for="phone"></small>
+          </div>
+        </div>
+
+        <div class="ck-card">
+          <h2>Delivery address</h2>
+
+          <div class="field">
+            <label for="addressLine1">Address line 1</label>
+            <input id="addressLine1" name="addressLine1" type="text" placeholder="House no, building, street" />
+            <small class="error" data-error-for="addressLine1"></small>
+          </div>
+
+          <div class="field">
+            <label for="addressLine2">Address line 2 <span>(optional)</span></label>
+            <input id="addressLine2" name="addressLine2" type="text" placeholder="Landmark, area" />
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="city">City</label>
+              <input id="city" name="city" type="text" placeholder="Patiala" />
+              <small class="error" data-error-for="city"></small>
+            </div>
+
+            <div class="field">
+              <label for="state">State</label>
+              <input id="state" name="state" type="text" placeholder="Punjab" />
+              <small class="error" data-error-for="state"></small>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="pincode">Pincode</label>
+              <input id="pincode" name="pincode" type="text" placeholder="147001" />
+              <small class="error" data-error-for="pincode"></small>
+            </div>
+
+            <div class="field">
+              <label for="country">Country</label>
+              <input id="country" name="country" type="text" value="India" />
+              <small class="error" data-error-for="country"></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="ck-card">
+          <h2>Payment method</h2>
+
+          <div class="pay-options">
+            <label class="pay-card active">
+              <input type="radio" name="paymentMethod" value="cod" checked />
+              <div>
+                <strong>Cash on Delivery</strong>
+                <p>Pay when your order arrives.</p>
+              </div>
+            </label>
+
+            <label class="pay-card">
+              <input type="radio" name="paymentMethod" value="upi" />
+              <div>
+                <strong>UPI</strong>
+                <p>Mock flow for demo checkout.</p>
+              </div>
+            </label>
+
+            <label class="pay-card">
+              <input type="radio" name="paymentMethod" value="card" />
+              <div>
+                <strong>Card</strong>
+                <p>Demo card payment UI.</p>
+              </div>
+            </label>
+          </div>
+
+          <div id="paymentInfo" class="payment-info">
+            Cash on Delivery selected.
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <aside class="ck-right">
+      <div class="summary-card">
+        <h2>Order summary</h2>
+
+        <div id="summaryItems" class="summary-items"></div>
+
+        <div class="summary-lines">
+          <div class="line">
+            <span>Subtotal</span>
+            <strong id="sumSubtotal">₹0</strong>
+          </div>
+          <div class="line">
+            <span>Shipping</span>
+            <strong id="sumShipping">₹0</strong>
+          </div>
+          <div class="line">
+            <span>Discount</span>
+            <strong id="sumDiscount">₹0</strong>
+          </div>
+          <div class="line total">
+            <span>Total</span>
+            <strong id="sumTotal">₹0</strong>
+          </div>
+        </div>
+
+        <button id="placeOrderBtn" class="place-order-btn" type="button">
+          Place order
+        </button>
+
+        <p class="secure-note">Encrypted checkout • Demo order system</p>
+      </div>
+    </aside>
+  </main>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="checkout.js"></script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wishlist — Gully Labs</title>
+  <link rel="stylesheet" href="ui.css" />
+  <style>
+    body {
+      margin: 0;
+      background: #f6f6f6;
+      color: #111;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .topbar a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .wrap {
+      width: min(1120px, 92vw);
+      margin: 34px auto 60px;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .wishlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 220px));
+      gap: 26px;
+      justify-content: start;
+    }
+
+    .wishlist-card {
+      background: #fff;
+      border: 1px solid #ececec;
+      border-radius: 20px;
+      padding: 16px;
+      text-align: center;
+      box-sizing: border-box;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .wishlist-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .wishlist-media {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #fafafa;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .wishlist-media img {
+      width: 88%;
+      height: 88%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .wishlist-tag {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: #666;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .wishlist-title {
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 700;
+      margin-bottom: 8px;
+      min-height: 38px;
+    }
+
+    .wishlist-price {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .wishlist-actions {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .wishlist-actions a,
+    .wishlist-actions button {
+      border: 1px solid #dcdcdc;
+      background: #fff;
+      color: #111;
+      text-decoration: none;
+      padding: 9px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .wishlist-actions button:hover,
+    .wishlist-actions a:hover {
+      background: #f3f3f3;
+    }
+
+    .empty {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 18px;
+      padding: 26px;
+      color: #666;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .empty a {
+      color: #111;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .wrap {
+        width: 94vw;
+      }
+
+      .wishlist-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .wishlist-card {
+        padding: 12px;
+      }
+
+      .wishlist-title {
+        font-size: 14px;
+        min-height: auto;
+      }
+
+      .wishlist-price {
+        font-size: 14px;
+      }
+
+      .wishlist-actions {
+        flex-direction: column;
+      }
+
+      .wishlist-actions a,
+      .wishlist-actions button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wishlist-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="ind.html">← Back to Home</a>
+    <a href="shop.html">Shop</a>
+  </div>
+
+  <div class="wrap">
+    <h1>My Wishlist</h1>
+    <div id="wishlistRoot"></div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="products.js"></script>
+  <script src="products-data.js"></script>
+  <script>
+    const root = document.getElementById("wishlistRoot");
+
+    function money(n) {
+      try {
+        return new Intl.NumberFormat("en-IN", {
+          style: "currency",
+          currency: "INR",
+          maximumFractionDigits: 0
+        }).format(n);
+      } catch {
+        return `₹${n}`;
+      }
+    }
+
+    function getProductsArray() {
+      if (typeof window.PRODUCTS === "object" && window.PRODUCTS !== null) {
+        if (Array.isArray(window.PRODUCTS)) return window.PRODUCTS;
+
+        return Object.entries(window.PRODUCTS).map(([slug, p]) => ({
+          slug,
+          ...p
+        }));
+      }
+
+      return [];
+    }
+
+    function renderWishlist() {
+      const wishlist = getWishlist();
+      const allProducts = getProductsArray();
+      const items = allProducts.filter(item => wishlist.includes(item.slug));
+
+      if (!items.length) {
+        root.innerHTML = `
+          <div class="empty">
+            Your wishlist is empty.<br><br>
+            <a href="shop.html">Browse products</a>
+          </div>
+        `;
+        return;
+      }
+
+      root.innerHTML = `
+        <div class="wishlist-grid">
+          ${items.map(item => `
+            <div class="wishlist-card">
+              <div class="wishlist-media">
+                <img src="${item.images?.[0] || ""}" alt="${item.name || "Product"}">
+              </div>
+
+              <div class="wishlist-tag">${item.tag || "MEN"}</div>
+              <div class="wishlist-title">${item.name || "Product"}</div>
+              <div class="wishlist-price">${money(item.price || 0)}</div>
+
+              <div class="wishlist-actions">
+                <a href="product.html?product=${encodeURIComponent(item.slug)}">View Product</a>
+                <button type="button" onclick="removeItem('${item.slug}')">Remove</button>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function removeItem(slug) {
+      const updated = getWishlist().filter(item => item !== slug);
+      setWishlist(updated);
+      renderWishlist();
+    }
+
+    renderWishlist();
+  </script>
+</body>
+</html>

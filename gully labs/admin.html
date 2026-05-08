@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Orders — Gully Labs</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header class="admin-header">
+    <h1>Gully Labs Admin</h1>
+    <p>Orders Dashboard</p>
+  </header>
+
+  <main class="admin-wrap">
+    <div class="admin-topbar">
+      <button id="refreshBtn">Refresh Orders</button>
+    
+      <input 
+        type="text" 
+        id="searchOrders" 
+        placeholder="Search by Order ID or Customer Name..."
+      >
+    
+      <select id="statusFilter">
+        <option value="">All Status</option>
+        <option value="Pending">Pending</option>
+        <option value="Confirmed">Confirmed</option>
+        <option value="Shipped">Shipped</option>
+        <option value="Delivered">Delivered</option>
+      </select>
+    
+      <button id="logoutBtn" type="button">Logout</button>
+    </div>
+
+    <div class="admin-stats">
+      <div class="stat-card">
+        <h3 id="totalOrders">0</h3>
+        <p>Total Orders</p>
+      </div>
+    
+      <div class="stat-card">
+        <h3 id="totalRevenue">₹0</h3>
+        <p>Total Revenue</p>
+      </div>
+    
+      <div class="stat-card">
+        <h3 id="pendingOrders">0</h3>
+        <p>Pending Orders</p>
+      </div>
+    
+      <div class="stat-card">
+        <h3 id="deliveredOrders">0</h3>
+        <p>Delivered Orders</p>
+      </div>
+    </div>
+
+    <div id="ordersContainer" class="orders-container">
+      <p>Loading orders...</p>
+    </div>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

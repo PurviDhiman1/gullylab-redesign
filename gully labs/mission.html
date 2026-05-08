@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Mission | Gully Labs</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0c0f;
+      --bg2:#0f1117;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.09);
+      --text:#f5f7ff;
+      --muted:rgba(245,247,255,.72);
+      --line:rgba(255,255,255,.12);
+      --shadow: 0 22px 60px rgba(0,0,0,.55);
+      --shadow2: 0 16px 40px rgba(0,0,0,.35);
+      --radius: 22px;
+      --radius2: 28px;
+      --max: 1180px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% -10%, rgba(77,138,255,.25), transparent 60%),
+        radial-gradient(900px 600px at 85% 10%, rgba(255,102,102,.18), transparent 55%),
+        radial-gradient(1000px 650px at 50% 120%, rgba(106,255,216,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* subtle noise */
+    body:before{
+      content:"";
+      position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+      pointer-events:none;
+      mix-blend-mode:overlay;
+      opacity:.55;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px}
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(10,11,14,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:18px; padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width:180px;
+    }
+    .brand img{
+      height:34px; width:auto; display:block;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,.35));
+    }
+    .nav-links{
+      display:flex; gap:18px; align-items:center;
+      font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+      color:rgba(245,247,255,.78);
+      white-space:nowrap;
+    }
+    .nav-links a{
+      padding:10px 10px;
+      border-radius:999px;
+      transition:.2s ease;
+    }
+    .nav-links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .nav-actions{display:flex; gap:10px; align-items:center; min-width:180px; justify-content:flex-end;}
+    .pill{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      transition:.2s ease;
+    }
+    .pill:hover{transform:translateY(-1px); background:rgba(255,255,255,.10)}
+
+    /* HERO */
+    .hero{
+      padding:54px 0 26px;
+      position:relative;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .hero-left{
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding:34px 30px;
+      position:relative;
+      overflow:hidden;
+    }
+    .kicker{
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:rgba(245,247,255,.72);
+      display:flex; align-items:center; gap:10px;
+    }
+    .kicker:before{
+      content:"";
+      width:42px; height:1px;
+      background:rgba(245,247,255,.32);
+      display:inline-block;
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size:54px;
+      line-height:1.02;
+      letter-spacing:-0.03em;
+    }
+    .sub{
+      color:rgba(245,247,255,.78);
+      font-size:16px;
+      line-height:1.6;
+      max-width:58ch;
+    }
+    .hero-cta{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:20px;
+    }
+    .btn{
+      border-radius:999px;
+      padding:12px 18px;
+      font-weight:700;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      transition:.2s ease;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.11)}
+    .btn.primary{
+      background:#fff;
+      color:#0b0c0f;
+      border-color:#fff;
+    }
+    .btn.primary:hover{filter:brightness(.95)}
+    .arrow{display:inline-block; transform:translateY(-1px)}
+
+    .hero-right{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      box-shadow: var(--shadow2);
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      overflow:hidden;
+    }
+    .quote{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding:16px 16px;
+      color:rgba(245,247,255,.86);
+      line-height:1.55;
+      font-size:14px;
+    }
+    .statrow{
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    .stat{
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding:14px 14px;
+    }
+    .stat b{
+      font-size:22px;
+      letter-spacing:-.02em;
+      display:block;
+    }
+    .stat span{
+      color:rgba(245,247,255,.72);
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    /* SECTIONS */
+    section{padding:26px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; margin-bottom:14px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:26px;
+      letter-spacing:-.02em;
+    }
+    .section-title p{
+      margin:0;
+      color:rgba(245,247,255,.68);
+      font-size:13px;
+      line-height:1.5;
+      max-width:52ch;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      padding:18px 18px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.25);
+      transition:.2s ease;
+      min-height:150px;
+    }
+    .card:hover{transform:translateY(-3px); background:rgba(255,255,255,.07)}
+    .tag{
+      font-size:11px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(245,247,255,.62);
+    }
+    .card h3{
+      margin:10px 0 8px;
+      font-size:18px;
+      letter-spacing:-.01em;
+    }
+    .card p{
+      margin:0;
+      color:rgba(245,247,255,.72);
+      line-height:1.6;
+      font-size:13px;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .panel{
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      padding:20px;
+      box-shadow: var(--shadow2);
+    }
+    .panel h3{margin:0 0 10px; font-size:18px}
+    .bullets{margin:0; padding-left:18px; color:rgba(245,247,255,.74); line-height:1.8; font-size:13px}
+    .cta-band{
+      margin-top:14px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(700px 260px at 20% 10%, rgba(77,138,255,.25), transparent 60%),
+        radial-gradient(700px 260px at 80% 30%, rgba(106,255,216,.16), transparent 55%),
+        rgba(255,255,255,.04);
+      padding:22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      box-shadow: var(--shadow2);
+    }
+    .cta-band h3{margin:0; font-size:18px}
+    .cta-band p{margin:4px 0 0; color:rgba(245,247,255,.72); font-size:13px; line-height:1.5; max-width:58ch}
+
+    footer{
+      padding:26px 0 34px;
+      color:rgba(245,247,255,.55);
+      font-size:12px;
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top:18px;
+      background:rgba(0,0,0,.10);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr; }
+      h1{font-size:42px}
+      .nav-links{display:none}
+      .nav-actions{min-width:auto}
+    }
+    @media (max-width: 760px){
+      .grid3{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
+      .cta-band{flex-direction:column; align-items:flex-start}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR (logo is IMAGE, not typed) -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="ind.html">
+        <!-- IMPORTANT: set this src to the SAME logo image you use on ind.html -->
+        <img src="new.png" alt="Gully Labs Logo">
+      </a>
+
+      <nav class="nav-links">
+        <a href="shop.html">Shop</a>
+        <a href="story.html">Story</a>
+        <a href="manifesto.html">Manifesto</a>
+        <a href="mission.html" style="background:rgba(255,255,255,.10); color:var(--text);">Mission</a>
+        <a href="sustainability.html">Sustainability</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="pill" href="ind.html">← Back</a>
+        <a class="pill" href="shop.html">Explore</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="kicker">Our Mission</div>
+          <h1>Built for culture.<br/>Engineered for comfort.</h1>
+          <p class="sub">
+            We make sneakers that feel premium, last longer, and represent where we’re from.
+            Every drop is a mix of craft, community, and modern construction — made to be worn every day.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn primary" href="shop.html">Explore Collection <span class="arrow">↗</span></a>
+            <a class="btn" href="sustainability.html">How we build <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+        <aside class="hero-right">
+          <div class="quote">
+            “We don’t chase trends. We build icons — with detail you can feel and stories you can wear.”
+          </div>
+          <div class="statrow">
+            <div class="stat">
+              <b>Craft-first</b>
+              <span>Material & finish</span>
+            </div>
+            <div class="stat">
+              <b>Everyday</b>
+              <span>Comfort engineering</span>
+            </div>
+          </div>
+          <div class="quote">
+            Designed in India. Made for the world. Rooted in community.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section>
+      <div class="section-title">
+        <h2>What we stand for</h2>
+        <p>Clear principles that make the brand feel premium — not just “nice looking”.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <div class="tag">Culture</div>
+          <h3>Real stories, not generic hype.</h3>
+          <p>We design from our streets, our communities, our references — with details that feel authentic.</p>
+        </div>
+
+        <div class="card">
+          <div class="tag">Comfort</div>
+          <h3>Engineered for daily movement.</h3>
+          <p>Fit, weight balance, cushioning and support — designed so you can wear them all day.</p>
+        </div>
+
+        <div class="card">
+          <div class="tag">Craft</div>
+          <h3>Premium materials & clean finish.</h3>
+          <p>Better construction, better stitching, better quality control — the kind you notice instantly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW WE BUILD -->
+    <section>
+      <div class="section-title">
+        <h2>How we build</h2>
+        <p>A premium brand feels “considered” — from materials to packaging to aftercare.</p>
+      </div>
+
+      <div class="split">
+        <div class="panel">
+          <h3>Design rules</h3>
+          <ul class="bullets">
+            <li>Every drop must have a story you can explain in one sentence.</li>
+            <li>Comfort is non-negotiable — fit should feel obvious.</li>
+            <li>Quality should be visible from 2 meters away.</li>
+            <li>No clutter. Clean typography. Strong photography.</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Quality checklist</h3>
+          <ul class="bullets">
+            <li>Material grading + finish consistency</li>
+            <li>Stitching alignment and edge painting</li>
+            <li>Shape retention and toe structure</li>
+            <li>Comfort test for daily wear</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cta-band">
+        <div>
+          <h3>Want to see the story behind the brand?</h3>
+          <p>Read the manifesto and understand the “why” — then explore the collection.</p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="manifesto.html">Read Manifesto →</a>
+          <a class="btn primary" href="shop.html">Explore Collection ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2026 Gully Labs — Mission & brand principles.
+    </div>
+  </footer>
+</body>
+</html>
