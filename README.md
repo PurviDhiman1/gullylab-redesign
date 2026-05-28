@@ -6,6 +6,9 @@ A modern frontend redesign project focused on improving UI/UX, responsiveness, a
 
 This project was redesigned to create a cleaner, modern, and more user-friendly experience while maintaining responsive design principles.
 
+## LIVE DEMO
+https://gullylab-redesign.vercel.app/
+
 ## Features
 
 - Responsive frontend design
